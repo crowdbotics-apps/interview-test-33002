@@ -1,9 +1,10 @@
 from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
 
-from app.models import Apps
+from app.models import Apps, Plan
 from app.api.v1.serializers import (
     AppSerializer,
+    PlanSerializer,
 )
 
 
@@ -12,3 +13,10 @@ class AppViewSet(ModelViewSet):
     permission_classes = (permissions.IsAuthenticated, )
     http_method_names = ["get", "post", "put", "delete"]
     queryset = Apps.objects.all()
+
+
+class PlanViewSet(ModelViewSet):
+    serializer_class = PlanSerializer
+    permission_classes = (permissions.IsAuthenticated, )
+    http_method_names = ["get"]
+    queryset = Plan.objects.all()

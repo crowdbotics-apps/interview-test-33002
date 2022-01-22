@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from app.models import Apps
+from app.models import Apps, Plan
 
 
 class AppSerializer(serializers.ModelSerializer):
@@ -18,3 +18,10 @@ class AppSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         app = Apps.objects.create(user=user, **validated_data)
         return app
+
+
+class PlanSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Plan
+        fields = '__all__'
