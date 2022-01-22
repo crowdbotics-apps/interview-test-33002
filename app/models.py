@@ -5,6 +5,14 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+class Plan(models.Model):
+    name = models.CharField(max_length=20)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
 class Apps(models.Model):
     WEB = 'web'
     MOBILE = 'mobile'
