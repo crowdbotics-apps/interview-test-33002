@@ -45,3 +45,12 @@ class Apps(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    app = models.OneToOneField(Apps, on_delete=models.CASCADE)
+    plan = models.OneToOneField(Plan, on_delete=models.CASCADE)
+    active = models.BooleanField(default=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
